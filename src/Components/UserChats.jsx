@@ -123,8 +123,9 @@ export default function UserChats({getUser}) {
           (data.length !== 0 && search.length === 0)
           ?
             data.map((key) => {
-              let time = `${new Date(key[1]?.date.seconds*1000).getHours()}:${new Date(key[1]?.date.seconds*1000).getMinutes()}`
-              return <Users key={key[0]} uid={key[1]?.userInfo.userId} name={key[1]?.userName} message={key[1]?.lastMessage} time={time} newEvent={getUser} event={clickHandler} />
+              let date = new Date(key[1]?.date?.seconds*1000);
+              let messageTime = `${date.getHours()}:${date.getMinutes()}`
+              return <Users key={key[0]} uid={key[1]?.userInfo.userId} name={key[1]?.userName} message={key[1]?.lastMessage} time={messageTime} newEvent={getUser} event={clickHandler} />
             })
           :
             <>
